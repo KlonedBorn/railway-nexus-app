@@ -20,6 +20,7 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
@@ -100,7 +101,11 @@ public class EditorController implements Initializable {
 
     @FXML
     void onActionPerformSelectorAction(ActionEvent event) {
-
+        Button source = (Button)event.getSource();
+        String mode = source.getText();
+        for(EditorMode m : EditorMode.values())
+            if(m.getName().matches(mode))
+                editor.getManager().switchTo(m);
     }
 
     @FXML
