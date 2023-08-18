@@ -1,6 +1,7 @@
 package com.kloneborn.controller;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import com.kloneborn.controller.editing.EditorManager;
@@ -16,10 +17,14 @@ import com.kloneborn.models.simulation.Simulation;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -27,6 +32,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
 import javafx.util.Duration;
 
 public class EditorController implements Initializable {
@@ -63,6 +69,12 @@ public class EditorController implements Initializable {
     @FXML
     private VBox vb_sidebar;
 
+    @FXML
+    private Group contentGroup;
+
+    private DoubleProperty zoomProperty;
+    private static final DecimalFormat ZOOM_FORMAT = new DecimalFormat("#.##");
+
     private static Simulation target = new Simulation();
 
     @Override
@@ -89,22 +101,43 @@ public class EditorController implements Initializable {
             holdForSeconds(15);
             fadeLabelOut(lb_editorError);
         });
+        this.lb_editorError.setVisible(false);
         this.lb_editorInfo.textProperty().addListener((observable, oldValue, newValue) -> {
             fadeLabelIn(lb_editorInfo);
             holdForSeconds(15);
             fadeLabelOut(lb_editorInfo);
         });
-
-        this.lb_editorError.setVisible(false);
         this.lb_editorInfo.setVisible(false);
+        this.zoomProperty = new SimpleDoubleProperty(1.0);
+        Scale scrollScale = new Scale(1, 1);
+        contentGroup.getTransforms().add(scrollScale);
+        pn_visualizer.scaleXProperty().bind(zoomProperty);
+        pn_visualizer.scaleYProperty().bind(zoomProperty);
+        sp_scroller.setOnScroll(event -> {
+            if (event.isControlDown()) {
+                double zoomFactor = event.getDeltaY() > 0 ? 1.1 : 1 / 1.1;
+                zoomProperty.set(zoomProperty.get() * zoomFactor);
+                event.consume();
+            }
+        });
+        pn_visualizer.layoutXProperty().bind(
+            sp_scroller.widthProperty().subtract(pn_visualizer.widthProperty()).divide(2)
+        );
+        pn_visualizer.layoutYProperty().bind(
+            sp_scroller.heightProperty().subtract(pn_visualizer.heightProperty()).divide(2)
+        );
+        sp_scroller.pannableProperty().bind(this.cb_pannable.selectedProperty());
+        lb_zoomPercent.textProperty().bind(Bindings.createStringBinding(
+                () -> ZOOM_FORMAT.format(zoomProperty.get() * 100) + "%",
+                zoomProperty));
     }
 
     @FXML
     void onActionPerformSelectorAction(ActionEvent event) {
-        Button source = (Button)event.getSource();
+        Button source = (Button) event.getSource();
         String mode = source.getText();
-        for(EditorMode m : EditorMode.values())
-            if(m.getName().matches(mode))
+        for (EditorMode m : EditorMode.values())
+            if (m.getName().matches(mode))
                 editor.getManager().switchTo(m);
     }
 
