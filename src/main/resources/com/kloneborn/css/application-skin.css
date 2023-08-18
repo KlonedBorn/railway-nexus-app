@@ -10,32 +10,8 @@
 }
 
 /* Style the text color for the entire application */
-.application .label, .application .button, .application .menu-item {
+.application .label, .application .button, .application {
     -fx-text-fill: #333;
-}
-
-
-.application .button:hover {
-    -fx-background-color: #eee;
-}
-
-/* Style menu bar */
-.application .menu-bar {
-    -fx-background-color: #333;
-    -fx-text-fill: white;
-}
-
-.application .menu {
-    -fx-background-color: #333;
-    -fx-text-fill: white;
-}
-
-.application .menu-item {
-    -fx-padding: 4px 12px;
-}
-
-.application .menu-item:hover {
-    -fx-background-color: #555;
 }
 
 /* Style grid layout */
@@ -59,13 +35,30 @@
 }
 
 /* Style editor error label */
-.application .editor-error {
-    -fx-text-fill: red;
+.editor-stack .editor-error {
+    -fx-pref-width:200px;
+    -fx-text-fill: white;
+    -fx-padding:10px;
+    -fx-background-color:red;
+    -fx-background-radius:8px;
+    -fx-font-size:14px;
+    -fx-opacity:0.7;
+    -fx-font-weight:bold;
+    -fx-font-family:"Arial";
+    -fx-alignment:center;
 }
 
 /* Style editor info label */
-.application .editor-info {
-    -fx-text-fill: green;
+.editor-stack .editor-info {
+    -fx-pref-width:200px;
+    -fx-text-fill: white;
+    -fx-padding:10px;
+    -fx-background-color:rgb(0, 146, 251);
+    -fx-background-radius:8px;
+    -fx-font-size:14px;
+    -fx-opacity:0.7;
+    -fx-font-weight:bold;
+    -fx-font-family:"Arial";
 }
 
 /* Style footer panel */

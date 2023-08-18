@@ -1,0 +1,53 @@
+/* Styling for the start menu bar */
+.start-menu {
+    -fx-background-color: #333;
+}
+
+/* Styling for the menu items within the start menu */
+.start-menu .menu-item {
+    -fx-text-fill: #333;
+    -fx-padding: 5px 10px;
+}
+
+/* Styling for the hovered menu items */
+.start-menu .menu-item:hover {
+    -fx-background-color: #555;
+}
+
+/* Styling for the menu */
+.start-menu .menu .menu-label{
+    -fx-background-color: white;
+}
+
+/* Styling for the menu label */
+.start-menu .menu-label {
+    -fx-text-fill: #333;
+}
+
+/* Styling for the menu arrow icon */
+.start-menu .menu .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5px;
+}
+
+/* Styling for the sub-menu */
+.start-menu .menu .menu {
+    -fx-background-color: #333;
+}
+
+/* Styling for the sub-menu items */
+.start-menu .menu .menu-item {
+    -fx-text-fill: #333;
+    -fx-padding: 5px 10px;
+}
+
+/* Styling for the hovered sub-menu items */
+.start-menu .menu .menu-item:hover {
+    -fx-background-color: #555;
+}
+
+/* Styling for the sub-menu arrow icon */
+.start-menu .menu .menu .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5px;
+}

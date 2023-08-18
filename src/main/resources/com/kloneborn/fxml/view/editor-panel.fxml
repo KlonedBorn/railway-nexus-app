@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -52,6 +54,15 @@
          <children>
             <ButtonBar prefWidth="200.0" styleClass="utility-bar" stylesheets="@../../css/utility-bar-skin.css" GridPane.columnSpan="2">
               <buttons>
+                  <CheckBox fx:id="cb_pannable" contentDisplay="RIGHT" mnemonicParsing="false" text="Pannable">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/icon/colored-move.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </CheckBox>
                 <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onActionPerformUtilityAction" text="Start">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
@@ -62,24 +73,32 @@
                      </graphic></Button>
               </buttons>
             </ButtonBar>
-            <StackPane GridPane.rowIndex="1">
+            <StackPane styleClass="editor-stack" GridPane.rowIndex="1">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hvalue="1.0" styleClass="main-content" vvalue="1.0">
+                  <ScrollPane fx:id="sp_scroller" fitToHeight="true" fitToWidth="true" hvalue="1.0" styleClass="main-content" vvalue="1.0">
                      <content>
-                        <Pane fx:id="pn_visualizer" styleClass="editor-visulizer">
-                           <children>
-                              <Label fx:id="lb_editorError" alignment="TOP_RIGHT" layoutX="14.0" layoutY="14.0" styleClass="editor-error" text="&lt;editor.onError&gt;" />
-                              <Label fx:id="lb_editorInfo" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="14.0" layoutY="295.0" styleClass="editor-info" text="&lt;editor.onInfo&gt;" />
-                           </children>
-                        </Pane>
+                        <Pane fx:id="pn_visualizer" styleClass="editor-visulizer" />
                      </content>
                   </ScrollPane>
+                  <Label fx:id="lb_editorError" alignment="CENTER" style="-fx-text-alignment: center;" styleClass="editor-error" text="&lt;editor.onError&gt;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="lb_editorInfo" alignment="CENTER" contentDisplay="TOP" styleClass="editor-info" text="&lt;editor.onInfo&gt;" textAlignment="CENTER" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" />
+                     </padding>
+                  </Label>
                </children>
             </StackPane>
             <VBox styleClass="footer-panel" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
                   <Label styleClass="panel-heading" text="Editor Selector" />
-                  <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" styleClass="selector-bar" stylesheets="@../../css/selector-bar-skin.css">
+                  <ButtonBar buttonMinWidth="120.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="839.0" styleClass="selector-bar" stylesheets="@../../css/selector-bar-skin.css">
                     <buttons>
                         <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Inspect">
                            <graphic>
@@ -156,7 +175,7 @@
                   <HBox alignment="CENTER" styleClass="value-field">
                      <children>
                         <Label styleClass="field__label" text="Zoom:" />
-                        <Label fx:id="lb_zoomPrecemt" styleClass="field__value" text="&lt;zoom.percentage&gt;" />
+                        <Label fx:id="lb_zoomPercent" styleClass="field__value" text="&lt;zoom.percentage&gt;" />
                      </children>
                   </HBox>
                </buttons>
