@@ -19,7 +19,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="application" stylesheets="@../../css/application-skin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kloneborn.controller.EditorController">
    <children>
@@ -81,11 +80,7 @@
                      <content>
                         <Group fx:id="contentGroup">
                            <children>
-                              <Pane fx:id="pn_visualizer" prefHeight="2000.0" prefWidth="2000.0" styleClass="editor-visulizer">
-                                 <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="200.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                                 </children>
-                              </Pane>
+                              <Pane fx:id="pn_visualizer" prefHeight="2000.0" prefWidth="2000.0" styleClass="editor-visulizer" />
                            </children>
                         </Group>
                      </content>
