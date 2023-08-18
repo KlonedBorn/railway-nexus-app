@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="application" stylesheets="@../../css/application-skin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kloneborn.controller.EditorController">
+   <children>
+      <MenuBar fx:id="mb_startMenu" styleClass="start-menu" stylesheets="@../../css/start-menu-skin.css">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <GridPane styleClass="grid-layout" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="10.0" />
+            <RowConstraints />
+        </rowConstraints>
+         <children>
+            <ButtonBar prefWidth="200.0" styleClass="utility-bar" stylesheets="@../../css/utility-bar-skin.css" GridPane.columnSpan="2">
+              <buttons>
+                <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onActionPerformUtilityAction" text="Start">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/icon/play.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+              </buttons>
+            </ButtonBar>
+            <StackPane GridPane.rowIndex="1">
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hvalue="1.0" styleClass="main-content" vvalue="1.0">
+                     <content>
+                        <Pane fx:id="pn_visualizer" styleClass="editor-visulizer">
+                           <children>
+                              <Label fx:id="lb_editorError" alignment="TOP_RIGHT" layoutX="14.0" layoutY="14.0" styleClass="editor-error" text="&lt;editor.onError&gt;" />
+                              <Label fx:id="lb_editorInfo" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="14.0" layoutY="295.0" styleClass="editor-info" text="&lt;editor.onInfo&gt;" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </StackPane>
+            <VBox styleClass="footer-panel" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <children>
+                  <Label styleClass="panel-heading" text="Editor Selector" />
+                  <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="200.0" styleClass="selector-bar" stylesheets="@../../css/selector-bar-skin.css">
+                    <buttons>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Inspect">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/coloured-loupe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Delete">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/trash-can.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Move">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/move.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Station">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/train-in-station.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Track">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/rail-road.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onActionPerformSelectorAction" text="Train">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/icon/shuttle-train.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                    </buttons>
+                  </ButtonBar>
+                  <HBox styleClass="value-field">
+                     <children>
+                        <Label styleClass="field__label" text="Editor Mode:" />
+                        <Label fx:id="lb_editorMode" styleClass="field__value" text="&lt;EditorManager.this.getMode().getMode()&gt;" />
+                     </children>
+                  </HBox>
+                  <HBox styleClass="value-field">
+                     <children>
+                        <Label styleClass="field__label" text="Mode Info" />
+                        <Label fx:id="lb_modeInfo" styleClass="field__value" text="&lt;EditorManager.this.getMode().getInfo()&gt;" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ButtonBar styleClass="cookie-bar" stylesheets="@../../css/cookie-bar-skin.css" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <buttons>
+                  <HBox alignment="CENTER" styleClass="value-field">
+                     <children>
+                        <Label styleClass="field__label" text="Zoom:" />
+                        <Label fx:id="lb_zoomPrecemt" styleClass="field__value" text="&lt;zoom.percentage&gt;" />
+                     </children>
+                  </HBox>
+               </buttons>
+            </ButtonBar>
+            <VBox fx:id="vb_sidebar" prefHeight="200.0" prefWidth="100.0" styleClass="sidebar-panel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</VBox>

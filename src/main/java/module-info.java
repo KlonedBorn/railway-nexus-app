@@ -4,6 +4,8 @@ module com.kloneborn {
     requires transitive javafx.graphics;
 
     opens com.kloneborn to javafx.fxml;
-
     exports com.kloneborn;
+
+    opens com.kloneborn.controller to javafx.fxml;
+    exports com.kloneborn.controller;
 }

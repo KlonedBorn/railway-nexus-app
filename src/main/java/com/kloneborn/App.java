@@ -17,8 +17,8 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static final String DEFAULT_FILE_PATH = "fxml/view/editor";
-    private static final String APP_ICON_PATH = "img/icon/app-icon.png";
+    private static final String DEFAULT_FILE_PATH = "fxml/view/editor-panel";
+    private static final String APP_ICON_PATH = "img/icon/train-station.png";
     private static final String TITLE = "Railway Nexus";
     private static final String VERSION = "1.0.0";
 
@@ -36,7 +36,7 @@ public class App extends Application {
     }
 
     private String getWindowTitle() {
-        return String.format("LogicSphere - %s - %s", App.TITLE,App.VERSION);
+        return String.format("LogicSphere - %s - %s", App.TITLE, App.VERSION);
     }
 
     private Image getApplicationIcon() {
@@ -47,14 +47,11 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    public static Parent loadFXML(String fxml) {
-        if(fxml.contains(".fxml")) fxml += ".fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        try {
+    public static Parent loadFXML(String fxml) throws IOException {
+        if (!fxml.contains(".fxml"))
+            fxml += ".fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
             return fxmlLoader.load();
-        } catch (IOException e) {
-            return createExceptionVBox(e);
-        }
     }
 
     public static VBox createExceptionVBox(Exception exception) {
