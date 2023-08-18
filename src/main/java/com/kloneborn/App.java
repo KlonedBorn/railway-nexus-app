@@ -36,7 +36,7 @@ public class App extends Application {
     }
 
     private String getWindowTitle() {
-        return String.format("LogicSphere - %s - %s", App.TITLE, App.VERSION);
+        return String.format("Kloneborn - %s - %s", App.TITLE, App.VERSION);
     }
 
     private Image getApplicationIcon() {
