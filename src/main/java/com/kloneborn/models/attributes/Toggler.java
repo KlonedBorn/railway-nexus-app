@@ -1,4 +1,4 @@
-package com.kloneborn.models.simulation;
+package com.kloneborn.models.attributes;
 
 public interface Toggler {
     public void open();

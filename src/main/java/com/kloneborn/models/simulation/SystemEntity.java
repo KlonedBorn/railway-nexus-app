@@ -2,6 +2,8 @@ package com.kloneborn.models.simulation;
 
 import java.util.UUID;
 
+import com.kloneborn.models.attributes.Toggler;
+import com.kloneborn.models.attributes.Verifier;
 import com.kloneborn.models.states.RSStatus;
 
 import javafx.beans.property.ObjectProperty;
