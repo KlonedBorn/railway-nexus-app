@@ -57,4 +57,14 @@ public abstract class SystemEntity implements Toggler, Verifier{
     public void setStatus(RSStatus status) {
         this.statusProperty.set(status);
     }
+
+    @Override
+    public void close() {
+        this.setStatus(RSStatus.CLOSED);
+    }
+
+    @Override
+    public void open() {
+        this.setStatus(RSStatus.OPEN);
+    }
 }

@@ -55,16 +55,6 @@ public abstract class TrainHandler extends SystemEntity {
     }
 
     @Override
-    public void close() {
-        this.setStatus(RSStatus.CLOSED);
-    }
-
-    @Override
-    public void open() {
-        this.setStatus(RSStatus.OPEN);
-    }
-
-    @Override
     public boolean verify() {
         return getTrain().verify();
     }
