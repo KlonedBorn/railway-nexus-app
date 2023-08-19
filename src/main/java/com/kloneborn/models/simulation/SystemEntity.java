@@ -3,20 +3,21 @@ package com.kloneborn.models.simulation;
 import java.util.UUID;
 
 import com.kloneborn.models.states.RSStatus;
-import com.kloneborn.utils.props.RSStatusProperty;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public abstract class SystemEntity {
+public abstract class SystemEntity implements Toggler, Verifier{
     private UUID uid;
     private StringProperty nameProperty;
-    private RSStatusProperty statusProperty;
+    private ObjectProperty<RSStatus> statusProperty;
 
     public SystemEntity(String name, RSStatus status){
         this.uid = UUID.randomUUID();
         this.nameProperty = new SimpleStringProperty(this,"system-entity-name",name);
-        this.statusProperty = new RSStatusProperty(this,"system-entity-status",status);
+        this.statusProperty = new SimpleObjectProperty<RSStatus>(this,"system-entity-status",status);
     }
 
     public SystemEntity(String name){
@@ -35,7 +36,7 @@ public abstract class SystemEntity {
         return nameProperty;
     }
 
-    public RSStatusProperty statusProperty() {
+    public ObjectProperty<RSStatus> statusProperty() {
         return statusProperty;
     }
 
