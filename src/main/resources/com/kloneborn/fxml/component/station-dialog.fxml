@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root headerText="Give your station an awesome name" prefWidth="500.0" stylesheets="@../../css/dialog-skin.css" type="DialogPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="form-body" stylesheets="@../../css/dialog-form-skin.css">
+         <children>
+            <VBox styleClass="form-section">
+               <children>
+                  <Label styleClass="field__label" text="Name" />
+                  <TextField fx:id="lb_stationName" onAction="#onActionValidateStationNameAndExit" promptText="Enter Station Name Here" styleClass="fiel__input--text" />
+                  <Label fx:id="lb_nameError" styleClass="field__error" text="&lt;error&gt;" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="FINISH" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+   <graphic>
+      <ImageView fitHeight="56.0" fitWidth="56.0" preserveRatio="true">
+         <image>
+            <Image url="@../../img/icon/train-in-station.png" />
+         </image>
+      </ImageView>
+   </graphic>
+</fx:root>

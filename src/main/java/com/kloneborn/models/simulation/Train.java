@@ -43,7 +43,7 @@ public class Train implements Verifier, Simulated {
     }
 
     public Station getNextStation(){
-        return getRoute().getNextStop(getLocation());
+        return getRoute().getNextStation(getLocation().getName());
     }
 
     public BooleanProperty registeredProperty(){

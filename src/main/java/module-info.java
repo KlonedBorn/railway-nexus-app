@@ -6,6 +6,9 @@ module com.kloneborn {
     opens com.kloneborn to javafx.fxml;
     exports com.kloneborn;
 
+    opens com.kloneborn.component.dialog to javafx.fxml;
+    exports com.kloneborn.component.dialog;
+
     opens com.kloneborn.controller to javafx.fxml;
     exports com.kloneborn.controller;
 }

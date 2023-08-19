@@ -19,7 +19,7 @@ public class App extends Application {
 
     private static final String DEFAULT_FILE_PATH = "fxml/view/editor-panel";
     private static final String APP_ICON_PATH = "img/icon/train-station.png";
-    private static final String TITLE = "Railway Nexus";
+    public static final String TITLE = "Railway Nexus";
     private static final String VERSION = "0.0.4";
 
     private static Scene scene;

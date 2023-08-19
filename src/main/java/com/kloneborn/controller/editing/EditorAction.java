@@ -22,6 +22,10 @@ public abstract class EditorAction {
         this.onInfo.set(info);
     }
 
+    protected Pane getVisualizer() {
+        return visualizer;
+    }
+
     abstract public void setup();
 
     abstract public void cleanup();

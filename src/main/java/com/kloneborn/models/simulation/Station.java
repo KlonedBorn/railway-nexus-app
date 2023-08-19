@@ -1,6 +1,7 @@
 package com.kloneborn.models.simulation;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.kloneborn.models.attributes.TrainHandlerBehavior;
 
@@ -13,8 +14,13 @@ public class Station extends TrainHandler {
 
     private final ListProperty<Track> tracksProperty;
 
-    public Station(Train train, Collection<? extends Track> tracks ) {
+    public Station(String name){
+        this(name, null, List.of());
+    }
+    
+    public Station(String name, Train train, Collection<? extends Track> tracks ) {
         super(train);
+        this.setName(name);
         setBehavior(new StationHandlerBehavior(this));
         this.tracksProperty = new SimpleListProperty<>(this, "paths", FXCollections.observableArrayList(tracks));
     }
