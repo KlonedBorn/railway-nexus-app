@@ -1,9 +1,9 @@
 package com.kloneborn.controller.editing.actions;
 
 import com.kloneborn.component.dialog.StationDialog;
+import com.kloneborn.component.graphics.StationGraphic;
 import com.kloneborn.controller.editing.EditorAction;
 import com.kloneborn.models.simulation.Station;
-import com.kloneborn.models.simulation.Station.StationGraphic;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

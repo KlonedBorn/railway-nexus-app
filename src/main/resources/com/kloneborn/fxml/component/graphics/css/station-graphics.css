@@ -1,0 +1,25 @@
+/* station-graphics.css */
+.custom-icon {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-background-color:white;
+}
+
+.icon-bar {
+    -fx-spacing: 10;
+    -fx-alignment:center;
+}
+
+.icon-bar__image {
+    -fx-fit-height: 150;
+    -fx-fit-width: 200;
+}
+
+.icon-bar__status {
+    -fx-fill: dodgerblue;
+    -fx-stroke: black;
+}
+
+.icon-name {
+    -fx-font-size: 14;
+}

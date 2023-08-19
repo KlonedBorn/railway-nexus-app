@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="custom-icon" stylesheets="@css/station-graphics.css" type="VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox mouseTransparent="true" styleClass="icon-bar">
+         <children>
+            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" styleClass="icon-bar__image">
+               <image>
+                  <Image url="@../../../img/icon/train-in-station.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="cr_stationStatus" fill="DODGERBLUE" radius="10.0" stroke="BLACK" strokeType="INSIDE" styleClass="icon-bar__status" />
+         </children>
+      </HBox>
+      <Label fx:id="lb_stationName" mouseTransparent="true" styleClass="icon-name" text="&lt;StationGraphic.owner.nameProperty()&gt;" />
+   </children>
+</fx:root>

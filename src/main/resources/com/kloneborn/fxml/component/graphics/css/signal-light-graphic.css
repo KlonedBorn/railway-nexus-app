@@ -1,0 +1,15 @@
+/* signal-light-graphic.css */
+.sl-case {
+    -fx-spacing: 2;
+    -fx-padding: 4;
+    -fx-background-color: grey;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: black;
+}
+
+.bulb {
+    -fx-fill: black;
+    -fx-radius: 10;
+    -fx-stroke: white;
+}

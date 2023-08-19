@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.kloneborn.App;
+import com.kloneborn.component.graphics.StationGraphic;
 import com.kloneborn.models.attributes.Graphic;
 import com.kloneborn.models.attributes.GraphicHandler;
 import com.kloneborn.models.attributes.GraphicSupplier;
@@ -59,61 +60,10 @@ public class Station extends TrainHandler implements GraphicSupplier {
 
     @Override
     public Node getGraphic() {
-        return (Node) this.graphics;
+        return this.graphics;
     }
 
-    public static class StationGraphic extends VBox implements Graphic{
-        private static final URL STATION_ICON_PATH = App.class.getResource("img/icon/train-in-station.png");
-        private Station owner;
-        private GraphicHandler handler;
-
-        public StationGraphic(Station station) {
-            this.owner = station;
-            buildGraphic();
-            this.handler = new GraphicHandler(this);
-        }
-        
-        public Station getOwner(){
-            return owner;
-        }
-
-        @Override
-        public void onRemovedFromParent(Pane parent) {
-            System.out.println("Remove");
-        }
-
-        @Override
-        public void onAddedToParent(Pane parent) {
-            System.out.println("Added");
-        }
-
-        @Override
-        public void buildGraphic() {
-            setSpacing(10);
-            setPadding(new Insets(10));
-            setAlignment(Pos.CENTER);
-
-            Image icon = new Image(STATION_ICON_PATH.toExternalForm());
-            ImageView stationImageView = new ImageView(icon);
-            stationImageView.setFitHeight(32.0);
-            stationImageView.setFitWidth(32.0);
-
-            Circle circle = new Circle(8.0, Color.BLACK);
-            Binding<Paint> onStatusChangeGetColor = Bindings.createObjectBinding(() -> owner.getStatus().getColor(),
-                    owner.statusProperty());
-            circle.fillProperty().bind(onStatusChangeGetColor);
-            circle.setStroke(Color.BLACK);
-            circle.setStrokeType(StrokeType.INSIDE);
-
-            HBox iconBox = new HBox(5);
-            iconBox.setAlignment(Pos.CENTER);
-            iconBox.getChildren().addAll(stationImageView, circle);
-
-            Label nameLabel = new Label(owner.getName());
-            nameLabel.textProperty().bind(owner.nameProperty());
-            nameLabel.setTextFill(Color.BLACK);
-
-            getChildren().addAll(iconBox, nameLabel);
-        }
+    public boolean isConnectedTo(Station endNode) {
+        return false;
     }
 }
