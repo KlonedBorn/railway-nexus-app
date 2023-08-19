@@ -30,6 +30,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
@@ -43,7 +44,7 @@ public class EditorController implements Initializable {
     private ScrollPane sp_scroller;
 
     @FXML
-    private CheckBox cb_pannable;
+    private ToggleButton tb_pan;
 
     @FXML
     private Label lb_editorError;
@@ -126,7 +127,7 @@ public class EditorController implements Initializable {
         pn_visualizer.layoutYProperty().bind(
             sp_scroller.heightProperty().subtract(pn_visualizer.heightProperty()).divide(2)
         );
-        sp_scroller.pannableProperty().bind(this.cb_pannable.selectedProperty());
+        sp_scroller.pannableProperty().bind(this.tb_pan.selectedProperty());
         lb_zoomPercent.textProperty().bind(Bindings.createStringBinding(
                 () -> ZOOM_FORMAT.format(zoomProperty.get() * 100) + "%",
                 zoomProperty));
