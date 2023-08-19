@@ -2,24 +2,33 @@ package com.kloneborn.controller.editing.actions;
 
 import com.kloneborn.component.dialog.StationDialog;
 import com.kloneborn.controller.editing.EditorAction;
+import com.kloneborn.models.simulation.Station;
+import com.kloneborn.models.simulation.Station.StationGraphic;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
-public class StationCreator extends EditorAction{
+public class StationCreator extends EditorAction {
     @Override
     public void setup() {
-        this.getVisualizer().setOnMouseClicked(this::onMouseClickedSpawnStation);
+        visualizer.setOnMouseClicked(this::onMouseClickedSpawnStation);
     }
 
     @Override
     public void cleanup() {
-        this.getVisualizer().setOnMouseClicked(null);
+        visualizer.setOnMouseClicked(null);
     }
 
     @FXML
     private void onMouseClickedSpawnStation(MouseEvent evt) {
         StationDialog prompt = new StationDialog();
-        prompt.showAndWait();
+        Station station = prompt.showAndWait().orElse(null);
+        if (station != null) {
+            StationGraphic graphic = (StationGraphic) station.getGraphic();
+            graphic.setLayoutX(evt.getX());
+            graphic.setLayoutY(evt.getY());
+            visualizer.getChildren().add(graphic);
+            this.target.stationsProperty().add(station);
+        }
     }
 }

@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import com.kloneborn.controller.editing.EditorManager;
 import com.kloneborn.controller.editing.EditorMode;
-import com.kloneborn.controller.editing.SimulationEditor;
 import com.kloneborn.controller.editing.actions.Deleter;
 import com.kloneborn.controller.editing.actions.Inspector;
 import com.kloneborn.controller.editing.actions.Mover;
@@ -37,7 +36,7 @@ import javafx.util.Duration;
 
 public class EditorController implements Initializable {
 
-    private SimulationEditor editor;
+    private EditorManager editor;
 
     @FXML
     private ScrollPane sp_scroller;
@@ -79,23 +78,21 @@ public class EditorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        editor = new SimulationEditor(
-                EditorController.target,
-                new EditorManager(
+        editor = new EditorManager(
+                        target,
                         pn_visualizer,
                         new StringProperty[] {
                                 lb_editorError.textProperty(), // Editor Error
                                 lb_editorInfo.textProperty(), // Editor Info
                                 lb_editorMode.textProperty(), // Editor Mode
                                 lb_modeInfo.textProperty(), // Editor Mode Info
-                        }));
-        EditorManager manager = editor.getManager();
-        manager.register(EditorMode.INSPECT, new Inspector());
-        manager.register(EditorMode.MOVE, new Mover());
-        manager.register(EditorMode.DELETE, new Deleter());
-        manager.register(EditorMode.STATION, new StationCreator());
-        manager.register(EditorMode.TRACK, new TrackCreator());
-        manager.register(EditorMode.TRAIN, new TrainCreator());
+                        });
+        editor.register(EditorMode.INSPECT, new Inspector());
+        editor.register(EditorMode.MOVE, new Mover());
+        editor.register(EditorMode.DELETE, new Deleter());
+        editor.register(EditorMode.STATION, new StationCreator());
+        editor.register(EditorMode.TRACK, new TrackCreator());
+        editor.register(EditorMode.TRAIN, new TrainCreator());
         this.lb_editorError.textProperty().addListener((observable, oldValue, newValue) -> {
             fadeLabelIn(lb_editorError);
             holdForSeconds(15);
@@ -138,7 +135,7 @@ public class EditorController implements Initializable {
         String mode = source.getText();
         for (EditorMode m : EditorMode.values())
             if (m.getName().matches(mode))
-                editor.getManager().switchTo(m);
+                editor.switchTo(m);
     }
 
     @FXML

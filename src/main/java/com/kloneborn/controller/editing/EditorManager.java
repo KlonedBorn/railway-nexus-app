@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.kloneborn.controller.editing.actions.UnSelector;
+import com.kloneborn.models.simulation.Simulation;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
@@ -17,12 +18,15 @@ public class EditorManager {
     private ObjectProperty<EditorAction> actionProperty;
     private StringProperty editorMode, modeInfo, editorError, editorInfo;
     private Pane visualizer;
+    private Simulation target;
 
-    public EditorManager(Pane pn_visualizer, StringProperty[] stringProperties) {
-        this.visualizer = pn_visualizer;
+    public EditorManager(Simulation target, Pane visualizer, StringProperty[] stringProperties) {
+        this.target = target;
+        this.visualizer = visualizer;
         this.actionMap = new HashMap<>();
         this.modeProperty = new SimpleObjectProperty<>(EditorMode.UNSELECT);
         this.actionProperty = new SimpleObjectProperty<>(new UnSelector());
+        getAction().attachToManager(target, visualizer, editorError, editorInfo);
         this.actionMap.put(getMode(),getAction());
         this.editorError = stringProperties[0];
         this.editorInfo = stringProperties[1];
@@ -57,6 +61,6 @@ public class EditorManager {
 
     public void register(EditorMode mode, EditorAction action) {
         this.actionMap.put(mode,action);
-        action.attachToManager(visualizer, editorMode, modeInfo);
+        action.attachToManager(target,visualizer, editorMode, modeInfo);
     }
 }

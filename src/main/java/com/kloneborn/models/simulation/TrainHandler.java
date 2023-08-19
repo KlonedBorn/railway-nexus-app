@@ -1,7 +1,6 @@
 package com.kloneborn.models.simulation;
 
 import com.kloneborn.models.attributes.TrainHandlerBehavior;
-import com.kloneborn.models.states.RSStatus;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

@@ -1,14 +1,18 @@
 package com.kloneborn.controller.editing;
 
+import com.kloneborn.models.simulation.Simulation;
+
 import javafx.beans.property.StringProperty;
 import javafx.scene.layout.Pane;
 
 public abstract class EditorAction {
-    private Pane visualizer;
+    protected Pane visualizer;
     private StringProperty onError;
     private StringProperty onInfo;
+    protected Simulation target;
 
-    public void attachToManager(Pane visualizer, StringProperty error, StringProperty info) {
+    public void attachToManager(Simulation target, Pane visualizer, StringProperty error, StringProperty info) {
+        this.target = target;
         this.visualizer = visualizer;
         this.onError = error;
         this.onInfo = info;
